@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+PASS 6
+PASS 30
+PASS -6
+ALL TESTS PASSED
+$finish called at time : 65 ns : File "C:/Users/sumay/Documents/fpga-accelerator-rtl/tb/mac_tb/mac_tb.v" Line 106

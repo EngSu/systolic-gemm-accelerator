@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+C:/Users/sumay/Documents/fpga-accelerator-rtl/fpga/zedboard/project/mac_project/mac_project.sim/sim_1/behav/xsim/glbl.v,1756381829,verilog,,,,glbl,,,,,,,,
+C:/Users/sumay/Documents/fpga-accelerator-rtl/rtl/mac/mac.v,1782860564,verilog,,C:/Users/sumay/Documents/fpga-accelerator-rtl/tb/mac_tb/mac_tb.v,,mac,,,../../../../../../../../../../../../AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,
+C:/Users/sumay/Documents/fpga-accelerator-rtl/tb/mac_tb/mac_tb.v,1782861785,verilog,,,,mac_tb,,,../../../../../../../../../../../../AMDDesignTools/2025.2/Vivado/data/rsb/busdef,,,,,

@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Tue Jun 30 19:24:07 2026
+# Process ID         : 42204
+# Current directory  : C:/Users/sumay/Documents/fpga-accelerator-rtl/fpga/zedboard/project/mac_project
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent25232 C:\Users\sumay\Documents\fpga-accelerator-rtl\fpga\zedboard\project\mac_project\mac_project.xpr
+# Log file           : C:/Users/sumay/Documents/fpga-accelerator-rtl/fpga/zedboard/project/mac_project/vivado.log
+# Journal file       : C:/Users/sumay/Documents/fpga-accelerator-rtl/fpga/zedboard/project/mac_project\vivado.jou
+# Running On         : LAPTOP-7T1DPAID
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
+# CPU Frequency      : 2803 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 16859 MB
+# Swap memory        : 10200 MB
+# Total Virtual      : 27059 MB
+# Available Virtual  : 11903 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/sumay/Documents/fpga-accelerator-rtl/fpga/zedboard/project/mac_project/mac_project.xpr

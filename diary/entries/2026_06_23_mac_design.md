@@ -1,29 +1,21 @@
-# MAC Design Entry
+# MAC First Implementation and Simulation
 
-Date: 2026-06-23
+## Date
+2026-06-23
 
-## Objective
+## Work Done
+- Implemented MAC RTL
+- Created Python golden model
+- Built self-checking testbench
+- Executed first simulation flow
 
-Develop a parameterized MAC unit for future systolic array integration.
+## Observations
+- Signed multiplication verified
+- Accumulation correct
+- Reset behavior functional
 
-## Design Decisions
+## Issues Found
+(To be updated after debugging)
 
-- Signed arithmetic
-- Parameterized widths
-- Registered output
-- Active-low reset
-
-## Verification Status
-
-RTL Written
-
-Golden Reference Created
-
-Self-Checking Testbench Created
-
-## Next Steps
-
-- Run simulation
-- Capture waveform
-- Review timing
-- Begin PE architecture
+## Next Step
+Extend MAC into Processing Element (PE) for systolic array architecture.

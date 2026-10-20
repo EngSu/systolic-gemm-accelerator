@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/sumay/Documents/fpga-accelerator-rtl/rtl/mac/mac.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mac
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/sumay/Documents/fpga-accelerator-rtl/tb/mac_tb/mac_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mac_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/sumay/Documents/fpga-accelerator-rtl/fpga/zedboard/project/mac_project/mac_project.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

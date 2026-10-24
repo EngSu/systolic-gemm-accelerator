@@ -1,0 +1,5 @@
+gemm_MxKxN,macs,os_pes,ws_pes,os_compute_edges,ws_compute_edges,os_setup_edges,ws_setup_edges,os_setup_plus_compute,ws_setup_plus_compute,os_input_bits_per_edge,ws_activation_bits_per_edge,ws_parallel_weight_bits,os_output_bits,ws_output_bits_per_row
+2x2x2,8,4,4,4,3,1,1,5,4,64,32,64,128,64
+3x3x3,27,9,9,7,5,1,1,8,6,96,48,144,288,96
+4x4x4,64,16,16,10,7,1,1,11,8,128,64,256,512,128
+2x4x3,24,6,12,7,5,1,1,8,6,80,64,192,192,96

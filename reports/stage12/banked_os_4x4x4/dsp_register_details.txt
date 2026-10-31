@@ -1,0 +1,16 @@
+u_array/GEN_ROWS[0].GEN_COLS[0].u_pe/acc_out_reg AREG=1 BREG=1 MREG=0 PREG=1
+u_array/GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg AREG=0 BREG=1 MREG=0 PREG=1
+u_array/GEN_ROWS[0].GEN_COLS[2].u_pe/acc_out_reg AREG=0 BREG=1 MREG=0 PREG=1
+u_array/GEN_ROWS[0].GEN_COLS[3].u_pe/acc_out_reg AREG=0 BREG=1 MREG=0 PREG=1
+u_array/GEN_ROWS[1].GEN_COLS[0].u_pe/acc_out_reg AREG=1 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[1].GEN_COLS[1].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[1].GEN_COLS[2].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[1].GEN_COLS[3].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[2].GEN_COLS[0].u_pe/acc_out_reg AREG=1 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[2].GEN_COLS[1].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[2].GEN_COLS[2].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[2].GEN_COLS[3].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[3].GEN_COLS[0].u_pe/acc_out_reg AREG=1 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[3].GEN_COLS[1].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[3].GEN_COLS[2].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+u_array/GEN_ROWS[3].GEN_COLS[3].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1

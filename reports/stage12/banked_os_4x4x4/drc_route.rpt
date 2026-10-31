@@ -1,0 +1,264 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Sat Oct 31 15:38:36 2026
+| Host         : LAPTOP-7T1DPAID running 64-bit major release  (build 9200)
+| Command      : report_drc -file C:/Users/sumay/systolic-gemm-accelerator/reports/stage12/banked_os_4x4x4/drc_route.rpt
+| Design       : os_gemm_banked_top
+| Device       : xc7z020clg484-1
+| Speed File   : -1
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: checkpoint_synthesized
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max checks: <unlimited>
+             Checks found: 42
++-----------+----------+------------------------+--------+
+| Rule      | Severity | Description            | Checks |
++-----------+----------+------------------------+--------+
+| DPIP-1    | Warning  | Input pipelining       | 24     |
+| DPOP-2    | Warning  | MREG Output pipelining | 16     |
+| RTSTAT-10 | Warning  | No routable loads      | 1      |
+| ZPS7-1    | Warning  | PS7 block required     | 1      |
++-----------+----------+------------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+DPIP-1#1 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg input u_array/GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#2 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[0].GEN_COLS[2].u_pe/acc_out_reg input u_array/GEN_ROWS[0].GEN_COLS[2].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#3 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[0].GEN_COLS[3].u_pe/acc_out_reg input u_array/GEN_ROWS[0].GEN_COLS[3].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#4 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[0].u_pe/acc_out_reg input u_array/GEN_ROWS[1].GEN_COLS[0].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#5 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[1].u_pe/acc_out_reg input u_array/GEN_ROWS[1].GEN_COLS[1].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#6 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[1].u_pe/acc_out_reg input u_array/GEN_ROWS[1].GEN_COLS[1].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#7 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[2].u_pe/acc_out_reg input u_array/GEN_ROWS[1].GEN_COLS[2].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#8 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[2].u_pe/acc_out_reg input u_array/GEN_ROWS[1].GEN_COLS[2].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#9 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[3].u_pe/acc_out_reg input u_array/GEN_ROWS[1].GEN_COLS[3].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#10 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[3].u_pe/acc_out_reg input u_array/GEN_ROWS[1].GEN_COLS[3].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#11 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[0].u_pe/acc_out_reg input u_array/GEN_ROWS[2].GEN_COLS[0].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#12 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[1].u_pe/acc_out_reg input u_array/GEN_ROWS[2].GEN_COLS[1].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#13 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[1].u_pe/acc_out_reg input u_array/GEN_ROWS[2].GEN_COLS[1].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#14 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[2].u_pe/acc_out_reg input u_array/GEN_ROWS[2].GEN_COLS[2].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#15 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[2].u_pe/acc_out_reg input u_array/GEN_ROWS[2].GEN_COLS[2].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#16 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[3].u_pe/acc_out_reg input u_array/GEN_ROWS[2].GEN_COLS[3].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#17 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[3].u_pe/acc_out_reg input u_array/GEN_ROWS[2].GEN_COLS[3].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#18 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[0].u_pe/acc_out_reg input u_array/GEN_ROWS[3].GEN_COLS[0].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#19 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[1].u_pe/acc_out_reg input u_array/GEN_ROWS[3].GEN_COLS[1].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#20 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[1].u_pe/acc_out_reg input u_array/GEN_ROWS[3].GEN_COLS[1].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#21 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[2].u_pe/acc_out_reg input u_array/GEN_ROWS[3].GEN_COLS[2].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#22 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[2].u_pe/acc_out_reg input u_array/GEN_ROWS[3].GEN_COLS[2].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#23 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[3].u_pe/acc_out_reg input u_array/GEN_ROWS[3].GEN_COLS[3].u_pe/acc_out_reg/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#24 Warning
+Input pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[3].u_pe/acc_out_reg input u_array/GEN_ROWS[3].GEN_COLS[3].u_pe/acc_out_reg/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPOP-2#1 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[0].GEN_COLS[0].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[0].GEN_COLS[0].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#2 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#3 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[0].GEN_COLS[2].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[0].GEN_COLS[2].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#4 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[0].GEN_COLS[3].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[0].GEN_COLS[3].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#5 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[0].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[1].GEN_COLS[0].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#6 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[1].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[1].GEN_COLS[1].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#7 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[2].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[1].GEN_COLS[2].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#8 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[1].GEN_COLS[3].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[1].GEN_COLS[3].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#9 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[0].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[2].GEN_COLS[0].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#10 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[1].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[2].GEN_COLS[1].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#11 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[2].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[2].GEN_COLS[2].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#12 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[2].GEN_COLS[3].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[2].GEN_COLS[3].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#13 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[0].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[3].GEN_COLS[0].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#14 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[1].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[3].GEN_COLS[1].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#15 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[2].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[3].GEN_COLS[2].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#16 Warning
+MREG Output pipelining  
+DSP u_array/GEN_ROWS[3].GEN_COLS[3].u_pe/acc_out_reg multiplier stage u_array/GEN_ROWS[3].GEN_COLS[3].u_pe/acc_out_reg/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+RTSTAT-10#1 Warning
+No routable loads  
+515 net(s) have no routable loads. The problem bus(es) and/or net(s) are u_array/GEN_ROWS[0].GEN_COLS[0].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[0].GEN_COLS[1].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[0].GEN_COLS[2].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[0].GEN_COLS[3].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[1].GEN_COLS[0].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[1].GEN_COLS[1].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[1].GEN_COLS[2].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[1].GEN_COLS[3].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[2].GEN_COLS[1].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[2].GEN_COLS[2].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[2].GEN_COLS[3].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[3].GEN_COLS[0].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[3].GEN_COLS[1].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[3].GEN_COLS[2].u_pe/c_flat[31:0],
+u_array/GEN_ROWS[3].GEN_COLS[3].u_pe/c_flat[31:0]
+ (the first 15 of 19 listed).
+Related violations: <none>
+
+ZPS7-1#1 Warning
+PS7 block required  
+The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
+Related violations: <none>
+
+

@@ -1,0 +1,227 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Sat Oct 31 16:04:59 2026
+| Host         : LAPTOP-7T1DPAID running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type min -max_paths 5 -file C:/Users/sumay/systolic-gemm-accelerator/reports/stage14/axi_os_4x4x4/worst5_hold_route.rpt
+| Design       : os_gemm_axi_lite_top
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.028ns  (arrival time - required time)
+  Source:                 a_stage_reg[28]/C
+                            (rising edge-triggered cell FDCE clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_accel/A_BANK[1].u_bank/mem_reg_0_3_12_15/RAMA/I
+                            (rising edge-triggered cell RAMD32 clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             s_axi_aclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (s_axi_aclk rise@0.000ns - s_axi_aclk rise@0.000ns)
+  Data Path Delay:        0.197ns  (logic 0.141ns (71.611%)  route 0.056ns (28.389%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.022ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.432ns
+    Source Clock Delay      (SCD):    0.410ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.410     0.410    s_axi_aclk
+    SLICE_X39Y35         FDCE                                         r  a_stage_reg[28]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y35         FDCE (Prop_fdce_C_Q)         0.141     0.551 r  a_stage_reg[28]/Q
+                         net (fo=2, routed)           0.056     0.607    u_accel/A_BANK[1].u_bank/mem_reg_0_3_12_15/DIA0
+    SLICE_X38Y35         RAMD32                                       r  u_accel/A_BANK[1].u_bank/mem_reg_0_3_12_15/RAMA/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.432     0.432    u_accel/A_BANK[1].u_bank/mem_reg_0_3_12_15/WCLK
+    SLICE_X38Y35         RAMD32                                       r  u_accel/A_BANK[1].u_bank/mem_reg_0_3_12_15/RAMA/CLK
+                         clock pessimism              0.000     0.432    
+    SLICE_X38Y35         RAMD32 (Hold_ramd32_CLK_I)
+                                                      0.147     0.579    u_accel/A_BANK[1].u_bank/mem_reg_0_3_12_15/RAMA
+  -------------------------------------------------------------------
+                         required time                         -0.579    
+                         arrival time                           0.607    
+  -------------------------------------------------------------------
+                         slack                                  0.028    
+
+Slack (MET) :             0.040ns  (arrival time - required time)
+  Source:                 a_stage_reg[54]/C
+                            (rising edge-triggered cell FDCE clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_accel/A_BANK[3].u_bank/mem_reg_0_3_6_11/RAMA/I
+                            (rising edge-triggered cell RAMD32 clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             s_axi_aclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (s_axi_aclk rise@0.000ns - s_axi_aclk rise@0.000ns)
+  Data Path Delay:        0.209ns  (logic 0.141ns (67.454%)  route 0.068ns (32.546%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.022ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.432ns
+    Source Clock Delay      (SCD):    0.410ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.410     0.410    s_axi_aclk
+    SLICE_X39Y32         FDCE                                         r  a_stage_reg[54]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y32         FDCE (Prop_fdce_C_Q)         0.141     0.551 r  a_stage_reg[54]/Q
+                         net (fo=2, routed)           0.068     0.619    u_accel/A_BANK[3].u_bank/mem_reg_0_3_6_11/DIA0
+    SLICE_X38Y32         RAMD32                                       r  u_accel/A_BANK[3].u_bank/mem_reg_0_3_6_11/RAMA/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.432     0.432    u_accel/A_BANK[3].u_bank/mem_reg_0_3_6_11/WCLK
+    SLICE_X38Y32         RAMD32                                       r  u_accel/A_BANK[3].u_bank/mem_reg_0_3_6_11/RAMA/CLK
+                         clock pessimism              0.000     0.432    
+    SLICE_X38Y32         RAMD32 (Hold_ramd32_CLK_I)
+                                                      0.147     0.579    u_accel/A_BANK[3].u_bank/mem_reg_0_3_6_11/RAMA
+  -------------------------------------------------------------------
+                         required time                         -0.579    
+                         arrival time                           0.619    
+  -------------------------------------------------------------------
+                         slack                                  0.040    
+
+Slack (MET) :             0.040ns  (arrival time - required time)
+  Source:                 b_stage_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_accel/B_BANK[0].u_bank/mem_reg_0_3_0_5/RAMA/I
+                            (rising edge-triggered cell RAMD32 clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             s_axi_aclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (s_axi_aclk rise@0.000ns - s_axi_aclk rise@0.000ns)
+  Data Path Delay:        0.209ns  (logic 0.141ns (67.454%)  route 0.068ns (32.546%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.022ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.432ns
+    Source Clock Delay      (SCD):    0.410ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.410     0.410    s_axi_aclk
+    SLICE_X37Y31         FDCE                                         r  b_stage_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X37Y31         FDCE (Prop_fdce_C_Q)         0.141     0.551 r  b_stage_reg[0]/Q
+                         net (fo=2, routed)           0.068     0.619    u_accel/B_BANK[0].u_bank/mem_reg_0_3_0_5/DIA0
+    SLICE_X36Y31         RAMD32                                       r  u_accel/B_BANK[0].u_bank/mem_reg_0_3_0_5/RAMA/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.432     0.432    u_accel/B_BANK[0].u_bank/mem_reg_0_3_0_5/WCLK
+    SLICE_X36Y31         RAMD32                                       r  u_accel/B_BANK[0].u_bank/mem_reg_0_3_0_5/RAMA/CLK
+                         clock pessimism              0.000     0.432    
+    SLICE_X36Y31         RAMD32 (Hold_ramd32_CLK_I)
+                                                      0.147     0.579    u_accel/B_BANK[0].u_bank/mem_reg_0_3_0_5/RAMA
+  -------------------------------------------------------------------
+                         required time                         -0.579    
+                         arrival time                           0.619    
+  -------------------------------------------------------------------
+                         slack                                  0.040    
+
+Slack (MET) :             0.094ns  (arrival time - required time)
+  Source:                 b_stage_reg[54]/C
+                            (rising edge-triggered cell FDCE clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_accel/B_BANK[3].u_bank/mem_reg_0_3_6_11/RAMA/I
+                            (rising edge-triggered cell RAMD32 clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             s_axi_aclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (s_axi_aclk rise@0.000ns - s_axi_aclk rise@0.000ns)
+  Data Path Delay:        0.263ns  (logic 0.141ns (53.636%)  route 0.122ns (46.364%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.022ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.432ns
+    Source Clock Delay      (SCD):    0.410ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.410     0.410    s_axi_aclk
+    SLICE_X31Y33         FDCE                                         r  b_stage_reg[54]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X31Y33         FDCE (Prop_fdce_C_Q)         0.141     0.551 r  b_stage_reg[54]/Q
+                         net (fo=2, routed)           0.122     0.673    u_accel/B_BANK[3].u_bank/mem_reg_0_3_6_11/DIA0
+    SLICE_X30Y34         RAMD32                                       r  u_accel/B_BANK[3].u_bank/mem_reg_0_3_6_11/RAMA/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.432     0.432    u_accel/B_BANK[3].u_bank/mem_reg_0_3_6_11/WCLK
+    SLICE_X30Y34         RAMD32                                       r  u_accel/B_BANK[3].u_bank/mem_reg_0_3_6_11/RAMA/CLK
+                         clock pessimism              0.000     0.432    
+    SLICE_X30Y34         RAMD32 (Hold_ramd32_CLK_I)
+                                                      0.147     0.579    u_accel/B_BANK[3].u_bank/mem_reg_0_3_6_11/RAMA
+  -------------------------------------------------------------------
+                         required time                         -0.579    
+                         arrival time                           0.673    
+  -------------------------------------------------------------------
+                         slack                                  0.094    
+
+Slack (MET) :             0.098ns  (arrival time - required time)
+  Source:                 b_stage_reg[14]/C
+                            (rising edge-triggered cell FDCE clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_accel/B_BANK[0].u_bank/mem_reg_0_3_12_15/RAMB/I
+                            (rising edge-triggered cell RAMD32 clocked by s_axi_aclk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             s_axi_aclk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (s_axi_aclk rise@0.000ns - s_axi_aclk rise@0.000ns)
+  Data Path Delay:        0.265ns  (logic 0.141ns (53.180%)  route 0.124ns (46.820%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.022ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.432ns
+    Source Clock Delay      (SCD):    0.410ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.410     0.410    s_axi_aclk
+    SLICE_X37Y35         FDCE                                         r  b_stage_reg[14]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X37Y35         FDCE (Prop_fdce_C_Q)         0.141     0.551 r  b_stage_reg[14]/Q
+                         net (fo=2, routed)           0.124     0.675    u_accel/B_BANK[0].u_bank/mem_reg_0_3_12_15/DIB0
+    SLICE_X36Y35         RAMD32                                       r  u_accel/B_BANK[0].u_bank/mem_reg_0_3_12_15/RAMB/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock s_axi_aclk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  s_axi_aclk (IN)
+                         net (fo=981, unset)          0.432     0.432    u_accel/B_BANK[0].u_bank/mem_reg_0_3_12_15/WCLK
+    SLICE_X36Y35         RAMD32                                       r  u_accel/B_BANK[0].u_bank/mem_reg_0_3_12_15/RAMB/CLK
+                         clock pessimism              0.000     0.432    
+    SLICE_X36Y35         RAMD32 (Hold_ramd32_CLK_I)
+                                                      0.146     0.578    u_accel/B_BANK[0].u_bank/mem_reg_0_3_12_15/RAMB
+  -------------------------------------------------------------------
+                         required time                         -0.578    
+                         arrival time                           0.675    
+  -------------------------------------------------------------------
+                         slack                                  0.098    
+
+
+
+

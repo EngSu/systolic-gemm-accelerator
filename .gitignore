@@ -1,2 +1,30 @@
 # Icarus Verilog simulation output
 *.vvp
+
+# Python
+__pycache__/
+*.pyc
+
+# Simulation
+/build/
+*.vvp
+*.vcd
+
+# Vivado generated files
+/.Xil/
+*.dcp
+*.jou
+*.log
+*.pb
+*.wdb
+*.backup.jou
+*.backup.log
+/clockInfo.txt
+/dfx_runtime.txt
+
+# Vivado generated project directories
+*.cache/
+*.runs/
+*.gen/
+*.sim/
+

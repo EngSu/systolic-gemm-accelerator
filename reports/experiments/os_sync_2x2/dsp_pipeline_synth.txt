@@ -1,0 +1,4 @@
+GEN_ROWS[0].GEN_COLS[0].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+GEN_ROWS[1].GEN_COLS[0].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1
+GEN_ROWS[1].GEN_COLS[1].u_pe/acc_out_reg AREG=0 BREG=0 MREG=0 PREG=1

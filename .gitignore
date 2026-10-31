@@ -28,3 +28,29 @@ __pycache__/
 *.gen/
 *.sim/
 
+
+# Python
+__pycache__/
+*.pyc
+
+# Simulation
+/build/
+*.vvp
+*.vcd
+*.wdb
+
+# Vivado temporary/generated files
+/.Xil/
+*.dcp
+*.jou
+*.log
+*.pb
+*.cache/
+*.runs/
+*.gen/
+*.sim/
+
+# Vivado runtime metadata
+/clockInfo.txt
+/dfx_runtime.txt
+

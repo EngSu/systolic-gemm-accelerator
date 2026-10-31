@@ -1,0 +1,287 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Sat Oct 31 12:12:21 2026
+| Host         : LAPTOP-7T1DPAID running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type max -max_paths 5 -path_type full_clock_expanded -input_pins -file C:/Users/sumay/systolic-gemm-accelerator/reports/implementation/os_2x2/presynth_worst5_setup.rpt
+| Design       : os_array_param
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Synthesized
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             3.710ns  (required time - arrival time)
+  Source:                 GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[11]/D
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (core_clk rise@10.000ns - core_clk rise@0.000ns)
+  Data Path Delay:        6.283ns  (logic 4.684ns (74.545%)  route 1.599ns (25.455%))
+  Logic Levels:           2  (DSP48E1=1 LUT2=1)
+  Clock Path Skew:        -0.049ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.924ns = ( 10.924 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.973ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_clk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=195, unset)          0.973     0.973    GEN_ROWS[0].GEN_COLS[0].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.518     1.491 r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/Q
+                         net (fo=15, unplaced)        0.800     2.291    GEN_ROWS[0].GEN_COLS[1].u_pe/Q[15]
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/A[29]
+                         DSP48E1 (Prop_dsp48e1_A[29]_P[11])
+                                                      4.016     6.307 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/P[11]
+                         net (fo=1, unplaced)         0.800     7.106    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0_n_94
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[11]_i_1/I0
+                         LUT2 (Prop_lut2_I0_O)        0.150     7.256 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[11]_i_1/O
+                         net (fo=1, unplaced)         0.000     7.256    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[11]_i_1_n_0
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[11]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_clk rise edge)
+                                                     10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=195, unset)          0.924    10.924    GEN_ROWS[0].GEN_COLS[1].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[11]/C
+                         clock pessimism              0.000    10.924    
+                         clock uncertainty           -0.035    10.889    
+                         FDCE (Setup_fdce_C_D)        0.077    10.966    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[11]
+  -------------------------------------------------------------------
+                         required time                         10.966    
+                         arrival time                          -7.256    
+  -------------------------------------------------------------------
+                         slack                                  3.710    
+
+Slack (MET) :             3.710ns  (required time - arrival time)
+  Source:                 GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[13]/D
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (core_clk rise@10.000ns - core_clk rise@0.000ns)
+  Data Path Delay:        6.283ns  (logic 4.684ns (74.545%)  route 1.599ns (25.455%))
+  Logic Levels:           2  (DSP48E1=1 LUT2=1)
+  Clock Path Skew:        -0.049ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.924ns = ( 10.924 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.973ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_clk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=195, unset)          0.973     0.973    GEN_ROWS[0].GEN_COLS[0].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.518     1.491 r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/Q
+                         net (fo=15, unplaced)        0.800     2.291    GEN_ROWS[0].GEN_COLS[1].u_pe/Q[15]
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/A[29]
+                         DSP48E1 (Prop_dsp48e1_A[29]_P[13])
+                                                      4.016     6.307 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/P[13]
+                         net (fo=1, unplaced)         0.800     7.106    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0_n_92
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[13]_i_1/I0
+                         LUT2 (Prop_lut2_I0_O)        0.150     7.256 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[13]_i_1/O
+                         net (fo=1, unplaced)         0.000     7.256    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[13]_i_1_n_0
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_clk rise edge)
+                                                     10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=195, unset)          0.924    10.924    GEN_ROWS[0].GEN_COLS[1].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[13]/C
+                         clock pessimism              0.000    10.924    
+                         clock uncertainty           -0.035    10.889    
+                         FDCE (Setup_fdce_C_D)        0.077    10.966    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[13]
+  -------------------------------------------------------------------
+                         required time                         10.966    
+                         arrival time                          -7.256    
+  -------------------------------------------------------------------
+                         slack                                  3.710    
+
+Slack (MET) :             3.710ns  (required time - arrival time)
+  Source:                 GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[15]/D
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (core_clk rise@10.000ns - core_clk rise@0.000ns)
+  Data Path Delay:        6.283ns  (logic 4.684ns (74.545%)  route 1.599ns (25.455%))
+  Logic Levels:           2  (DSP48E1=1 LUT2=1)
+  Clock Path Skew:        -0.049ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.924ns = ( 10.924 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.973ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_clk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=195, unset)          0.973     0.973    GEN_ROWS[0].GEN_COLS[0].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.518     1.491 r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/Q
+                         net (fo=15, unplaced)        0.800     2.291    GEN_ROWS[0].GEN_COLS[1].u_pe/Q[15]
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/A[29]
+                         DSP48E1 (Prop_dsp48e1_A[29]_P[15])
+                                                      4.016     6.307 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/P[15]
+                         net (fo=1, unplaced)         0.800     7.106    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0_n_90
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[15]_i_1/I0
+                         LUT2 (Prop_lut2_I0_O)        0.150     7.256 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[15]_i_1/O
+                         net (fo=1, unplaced)         0.000     7.256    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[15]_i_1_n_0
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_clk rise edge)
+                                                     10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=195, unset)          0.924    10.924    GEN_ROWS[0].GEN_COLS[1].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[15]/C
+                         clock pessimism              0.000    10.924    
+                         clock uncertainty           -0.035    10.889    
+                         FDCE (Setup_fdce_C_D)        0.077    10.966    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[15]
+  -------------------------------------------------------------------
+                         required time                         10.966    
+                         arrival time                          -7.256    
+  -------------------------------------------------------------------
+                         slack                                  3.710    
+
+Slack (MET) :             3.710ns  (required time - arrival time)
+  Source:                 GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[17]/D
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (core_clk rise@10.000ns - core_clk rise@0.000ns)
+  Data Path Delay:        6.283ns  (logic 4.684ns (74.545%)  route 1.599ns (25.455%))
+  Logic Levels:           2  (DSP48E1=1 LUT2=1)
+  Clock Path Skew:        -0.049ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.924ns = ( 10.924 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.973ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_clk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=195, unset)          0.973     0.973    GEN_ROWS[0].GEN_COLS[0].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.518     1.491 r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/Q
+                         net (fo=15, unplaced)        0.800     2.291    GEN_ROWS[0].GEN_COLS[1].u_pe/Q[15]
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/A[29]
+                         DSP48E1 (Prop_dsp48e1_A[29]_P[17])
+                                                      4.016     6.307 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/P[17]
+                         net (fo=1, unplaced)         0.800     7.106    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0_n_88
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[17]_i_1/I0
+                         LUT2 (Prop_lut2_I0_O)        0.150     7.256 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[17]_i_1/O
+                         net (fo=1, unplaced)         0.000     7.256    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[17]_i_1_n_0
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[17]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_clk rise edge)
+                                                     10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=195, unset)          0.924    10.924    GEN_ROWS[0].GEN_COLS[1].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[17]/C
+                         clock pessimism              0.000    10.924    
+                         clock uncertainty           -0.035    10.889    
+                         FDCE (Setup_fdce_C_D)        0.077    10.966    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[17]
+  -------------------------------------------------------------------
+                         required time                         10.966    
+                         arrival time                          -7.256    
+  -------------------------------------------------------------------
+                         slack                                  3.710    
+
+Slack (MET) :             3.710ns  (required time - arrival time)
+  Source:                 GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[19]/D
+                            (rising edge-triggered cell FDCE clocked by core_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (core_clk rise@10.000ns - core_clk rise@0.000ns)
+  Data Path Delay:        6.283ns  (logic 4.684ns (74.545%)  route 1.599ns (25.455%))
+  Logic Levels:           2  (DSP48E1=1 LUT2=1)
+  Clock Path Skew:        -0.049ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.924ns = ( 10.924 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.973ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_clk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=195, unset)          0.973     0.973    GEN_ROWS[0].GEN_COLS[0].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.518     1.491 r  GEN_ROWS[0].GEN_COLS[0].u_pe/a_out_reg[15]/Q
+                         net (fo=15, unplaced)        0.800     2.291    GEN_ROWS[0].GEN_COLS[1].u_pe/Q[15]
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/A[29]
+                         DSP48E1 (Prop_dsp48e1_A[29]_P[19])
+                                                      4.016     6.307 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0/P[19]
+                         net (fo=1, unplaced)         0.800     7.106    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out0_n_86
+                                                                      r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[19]_i_1/I0
+                         LUT2 (Prop_lut2_I0_O)        0.150     7.256 r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[19]_i_1/O
+                         net (fo=1, unplaced)         0.000     7.256    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out[19]_i_1_n_0
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[19]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_clk rise edge)
+                                                     10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=195, unset)          0.924    10.924    GEN_ROWS[0].GEN_COLS[1].u_pe/clk
+                         FDCE                                         r  GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[19]/C
+                         clock pessimism              0.000    10.924    
+                         clock uncertainty           -0.035    10.889    
+                         FDCE (Setup_fdce_C_D)        0.077    10.966    GEN_ROWS[0].GEN_COLS[1].u_pe/acc_out_reg[19]
+  -------------------------------------------------------------------
+                         required time                         10.966    
+                         arrival time                          -7.256    
+  -------------------------------------------------------------------
+                         slack                                  3.710    
+
+
+
+

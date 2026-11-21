@@ -1,8 +1,27 @@
 # Systolic GEMM Accelerator
 
-A parameterized, signed-integer **output-stationary (OS) systolic GEMM accelerator** in Verilog for the ZedBoard (Zynq-7000 XC7Z020), with a weight-stationary (WS) array kept as a comparison baseline. The design is verified in simulation against a Python reference model, characterized with out-of-context Vivado synthesis and routing, and wrapped in an AXI4-Lite register interface.
+A Verilog FPGA accelerator project exploring output-stationary (OS) and weight-stationary (WS) systolic architectures for General Matrix Multiplication (GEMM), targeting the ZedBoard (Zynq-7000 XC7Z020).
+
+The project progresses from a single multiply-accumulate unit to parameterized systolic arrays, banked operand memories, a prefetch controller, and an AXI4-Lite register interface. It is verified in simulation against a Python reference model and characterized with out-of-context Vivado synthesis and routing.
 
 **Status:** simulation-verified and routed out of context. **Not yet run on hardware.** See [What is and is not demonstrated](#what-is-and-is-not-demonstrated).
+
+## Objectives
+
+- Design reusable, parameterized Verilog RTL modules.
+- Implement OS and WS dataflows and compare them fairly.
+- Verify RTL automatically against Python fixed-width reference models.
+- Evaluate FPGA resource use and timing, and explain what drives them.
+- Integrate the accelerator with the Zynq processing system over AXI.
+
+## Dataflows
+
+GEMM computes `C = A x B`, with `A` of size M x K, `B` of size K x N and `C` of size M x N.
+
+- **Output-stationary (OS):** each processing element keeps its own output partial sum while A and B operands move across the array. Local accumulation avoids moving partial sums.
+- **Weight-stationary (WS):** each processing element holds a weight and reuses it while activations and partial sums move through. Weight reuse reduces repeated weight delivery.
+
+Both were built and verified independently so they can be compared. The OS design is the one wired to memory and AXI.
 
 ## Architecture
 
@@ -56,6 +75,21 @@ Both integrated designs routed with zero routing errors.
 
 Shapes (M×K×N): 2×2×2, 3×3×3, 4×4×4, 2×4×3. Cases: positive, mixed-sign, and maximum-positive values that exercise 32-bit wrap. Simulator: Icarus Verilog.
 
+### Per-module directed tests
+
+| Design | Directed tests |
+|---|---|
+| MAC | 3 |
+| Initial PE | 3 |
+| OS PE | 8 |
+| WS PE | 11 |
+| Two-stage WS chain | 9 |
+| 2x2 WS GEMM array | 10 |
+| 2x2 OS GEMM array | 11 |
+| 2x2 OS/WS RTL co-simulation | 31 matrix cases, 0 failures |
+
+These counts are carried over from the earlier README and were not re-run for this edit.
+
 ## Key finding: reset style changes DSP inference
 
 Changing only the OS accumulator from asynchronous to synchronous reset moved the accumulator register from fabric into the DSP48E1 P register (PREG 0 → 1 for all 16 DSPs). Routed LUTs fell from 266 to 18 and FFs from 920 to 408.
@@ -96,19 +130,31 @@ fpga/zedboard/   constraints
 
 ## Reproducing results
 
-Requirements: Icarus Verilog, Python 3, Vivado 2025.2. Commands run from the repository root (Windows PowerShell).
+Requirements: Icarus Verilog, Python 3, and Vivado 2025.2 for synthesis. Run commands from the repository root.
+
+### Python and Icarus (macOS, Linux, Windows)
+
+```bash
+python3 -m verification.reference_models.gemm_reference
+python3 -m unittest discover -s verification/regressions -p 'test_*.py' -v
+python3 -m verification.regressions.run_gemm_cosim
+python3 verification/regressions/run_param_gemm_regression_os_sync.py
+
+# Parameterized OS array, 2x2
+iverilog -g2012 -s os_array_param_tb -o /tmp/os_param_2x2.vvp \
+  rtl/pe/pe_os.v rtl/array/os/os_array_param.v tb/array/os/os_array_param_tb.v
+vvp /tmp/os_param_2x2.vvp
+```
+
+### Integration regressions and Vivado (Windows PowerShell)
+
+These scripts were written on Windows. The Vivado path below is the author's install location.
 
 ```powershell
-# Python
-python -m unittest discover -s verification/regressions -p "test_*.py" -v
-python verification/regressions/run_param_gemm_regression_os_sync.py
-
-# Icarus regressions
 .\scripts\sim\run_os_scheduler_scaling.ps1
 .\scripts\sim\run_stage11_banked_memory.ps1
 .\scripts\sim\run_stage13_axi4lite.ps1
 
-# Vivado out-of-context synthesis and routing (Stage 14)
 $vivado = 'C:\AMDDesignTools\2025.2\Vivado\bin\vivado.bat'
 & $vivado -mode batch -source scripts/synth/synth_stage14_axi_ooc.tcl -tclargs 4 4 4
 & $vivado -mode batch -source scripts/implementation/route_stage14_axi_ooc.tcl -tclargs 4 4 4
@@ -128,5 +174,9 @@ $vivado = 'C:\AMDDesignTools\2025.2\Vivado\bin\vivado.bat'
 - AMD UG901, *Vivado Synthesis*; UG904, *Vivado Implementation*; UG906, *Design Analysis and Closure Techniques*
 - AMD UG1037, *Vivado AXI Reference Guide*
 - Google TPU and UC Berkeley Gemmini for systolic-array background
+
+## Development approach
+
+Architecture specification, RTL, directed verification, automated regression, parameterization, FPGA evaluation, then SoC integration. Design decisions and experiments are documented in `docs/`, `reports/` and the `diary/` journal. Further reading: [`docs/architecture/references.md`](docs/architecture/references.md).
 
 This is an engineering and learning project, not a production accelerator.

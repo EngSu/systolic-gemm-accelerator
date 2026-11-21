@@ -1,3 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        os_gemm_axi_lite_top
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   AXI4-Lite register interface to os_gemm_banked_top. Registers: COMMAND
+//                0x000, STATUS 0x004, LOAD_INDEX 0x008, CONFIG 0x00C, A_STAGE 0x100,
+//                B_STAGE 0x140, RESULT 0x200. COMMAND is value-encoded: 1 START,
+//                2 LOAD_BEGIN, 4 COMMIT.
+// Notes:         One outstanding read and one outstanding write; no bursts, interrupts
+//                or DMA; full-word writes only (WSTRB = 4'hF). Illegal accesses get SLVERR.
+//                DONE is sticky until the next START or LOAD_BEGIN.
+//                Supported: 1 <= ROWS, COLS <= 16 and 1 <= K <= 255.
+////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns/1ps
 // Stage 13 experimental AXI4-Lite register interface to Stage 11 banked OS GEMM.
 // Intended for one shared clock, 32-bit data, 16-bit operands, 32-bit accumulators.

@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        ws_array_param
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Parameterized weight-stationary array of K_STAGES x COLS pe_ws cells.
+//                Weights are packed in weights_flat at offset (k*COLS + c)*DATA_WIDTH.
+//                Partial sums ripple down the k stages; one result per column.
+// Notes:         Activations are shared by all columns; the caller supplies the skew.
+//                Comparison design: it is not connected to the AXI top.
+////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
 

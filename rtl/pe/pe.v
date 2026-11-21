@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        pe
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   First-generation processing element with fixed 16-bit operands and a
+//                32-bit partial sum. Forwards a and b one clock later and registers
+//                acc_in + a*b into acc_out.
+// Notes:         No valid or clear control and no local accumulator.
+//                Superseded by pe_os (output stationary) and pe_ws (weight stationary).
+////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns/1ps
 
 module pe (

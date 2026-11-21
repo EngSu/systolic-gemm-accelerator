@@ -80,11 +80,24 @@ foreach source $sources {
 }
 
 # Synthesize as internal logic, not a board pin-level design.
-synth_design \
+
+# Construct synthesis command with an explicit
+# -generic option for each top-level parameter.
+
+set synth_cmd [list \
+    synth_design \
     -top $top \
     -part $part \
     -mode out_of_context \
-    -generic $generics
+]
+
+foreach assignment $generics {
+    lappend synth_cmd -generic $assignment
+}
+
+puts "Running: $synth_cmd"
+
+{*}$synth_cmd
 
 # Preliminary internal clock constraint.
 # This is NOT a measured maximum clock frequency.

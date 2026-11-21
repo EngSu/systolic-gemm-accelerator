@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        pe_ws
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Weight-stationary processing element. Holds one weight, loaded with
+//                load_weight, and computes psum_out <= psum_in + activation_in*weight.
+//                valid_out marks a registered, valid result.
+// Notes:         Loading has priority over computing and drops valid_out.
+//                Computation is accepted only after a weight has been loaded.
+//                The PE does not forward activations; the array broadcasts them.
+////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
 

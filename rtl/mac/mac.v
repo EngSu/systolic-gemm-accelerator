@@ -1,45 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        mac
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Signed multiply-accumulate with a registered output:
+//                acc_out <= acc_in + a*b, one clock of latency, async active-low reset.
+//                Standalone building block; the PEs repeat this arithmetic inline.
+// Notes:         Not instantiated by any other RTL in this repository.
+//                ACC_WIDTH must be at least 2*DATA_WIDTH (product is sign-extended).
+////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns/1ps
-/////////////////////////////////////////////////////////////////////////////////
-// Company: York University
-// Engineer: Sumaia A
-// Supervisor: Prof. Sebastian Magierowski
-//
-// Create Date: 06/20/2024
-// Design Name: MAC Unit for Systolic Array Hardware Accelerator
-// Module Name: mac
-// Project Name: fpga-accelerator-rtl
-//
-// Target Devices: AMD Zynq-7000 SoC (XC7Z020 - ZedBoard)
-//
-// Tool Versions: Vivado 2025.x
-//
-// Description:
-// This module implements a Multiply-Accumulate (MAC) unit, which is the
-// fundamental computation block for a systolic array-based hardware accelerator.
-//
-// Functionality:
-// - Performs signed multiplication of inputs a and b
-// - Accumulates result with previous partial sum (acc_in)
-// - Produces registered output acc_out (1-cycle latency)
-//
-// This MAC serves as the building block for:
-// - Processing Element (PE)
-// - 2×2 and 4×4 Systolic Arrays
-// - Neural Network Acceleration Units
-//
-// Architecture Notes:
-// - Fully synchronous design (posedge clock)
-// - Active-low reset
-// - Signed arithmetic for DSP-style workloads
-//
-// Revision:
-// Revision 0.01 - File Created
-// Revision 0.02 - Updated for systolic-array integration readiness
-//
-// Additional Comments:
-// - This module is designed for reuse in scalable systolic architectures
-// - Will be extended into PE with data forwarding in next iteration
-/////////////////////////////////////////////////////////////////////////////////
 module mac #(
     parameter DATA_WIDTH = 16,
     parameter ACC_WIDTH  = 32

@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        os_mem_prefetch_ctrl
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Controller for synchronous-read operand banks. Reads edge t+1 operands
+//                during edge t so data and valid bits reach the array aligned. Also
+//                tracks which k slots were loaded and gates start on that.
+// Notes:         load_begin clears the loaded flags; memory contents are not cleared.
+//                start is ignored unless every slot is loaded and no write is in flight.
+//                No loading is accepted outside IDLE.
+////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns/1ps
 // Timing controller for synchronous-read operand banks.
 // Read E0 operands at the CLEAR edge; during E(t), read E(t+1) operands.

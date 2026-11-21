@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        os_array_param
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Parameterized ROWS x COLS output-stationary array. A flows east and B
+//                flows south through registered pe_os cells; per-cell registers delay
+//                the A and B valid bits. Results are packed row-major in c_flat.
+// Notes:         A PE accumulates only when both its A and B valids are high.
+//                Input skew is supplied by the controller, not by this module.
+//                Instantiated by os_gemm_banked_top.
+////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
 

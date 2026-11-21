@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        pe_os
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Output-stationary processing element, baseline version. Forwards a and
+//                b (and valid) one clock later, and accumulates a*b into a local
+//                register while valid_in is high; clear_acc zeroes it.
+// Notes:         Accumulator uses ASYNCHRONOUS reset, so Vivado does not place it in the
+//                DSP48E1 P register. Used by the array-level tests and 2x2 co-simulation.
+//                Same module name as pe_os_sync.v: compile only one of them per build.
+////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
 

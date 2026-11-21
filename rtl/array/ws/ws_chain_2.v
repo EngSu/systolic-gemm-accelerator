@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        ws_chain_2
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Two pe_ws elements in series, forming one column of a
+//                weight-stationary array. Stage 1 adds its product to stage 0's
+//                registered partial sum.
+// Notes:         Stage 0's sum is registered, so activation1_in must arrive one clock
+//                after activation0_in.
+//                Intermediate psum_stage0 is exported for verification only.
+////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
 

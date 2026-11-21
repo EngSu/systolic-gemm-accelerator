@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        os_input_scheduler
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Test-only scheduler for os_array_param. Takes whole A and B matrices on
+//                input buses and presents skewed operands and valid bits with zero
+//                latency, over IDLE, CLEAR, RUN and DONE states.
+// Notes:         Matrix buses must stay stable from start until done.
+//                Models no memory latency; the shipped design uses os_mem_prefetch_ctrl.
+//                Run length is K + ROWS + COLS - 2 edges.
+////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns/1ps
 
 // Register-backed input scheduler for a parameterized OS systolic array.

@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        gemm_sync_bank
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Small memory bank: one synchronous write port, one synchronous read
+//                port, one clock. rd_data appears one clock after rd_addr.
+// Notes:         No reset or initial contents: write every address before reading it.
+//                ram_style is auto; the routed 4x4x4 design uses distributed RAM.
+//                Same-address read and write in one cycle returns the old data.
+////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns/1ps
 // One synchronous-read, one synchronous-write port, same clock.
 // No RAM initialization/reset: write all addresses before the first read.

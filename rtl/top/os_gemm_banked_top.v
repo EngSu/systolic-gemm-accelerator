@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        os_gemm_banked_top
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Banked-memory output-stationary GEMM core: one gemm_sync_bank per A row
+//                and per B column, os_mem_prefetch_ctrl, and os_array_param.
+//                One load beat writes the same k address in every bank.
+// Notes:         Bank writes are allowed only when idle, not during load_begin, and
+//                for wr_addr < K.
+//                Wrapped by os_gemm_axi_lite_top.
+////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns/1ps
 // Stage 11: register-loaded banked operands -> prefetch -> verified OS array.
 // A row r has bank r holding A[r][0..K-1].

@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        systolic_array_os_2x2
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Hand-wired 2x2 output-stationary array of pe_os elements. A enters
+//                from the left and B from the top; each PE keeps one C element.
+//                Four valid registers delay the operand valids by one clock.
+// Notes:         Legacy fixed-size version; os_array_param generalises it.
+//                Used by the 2x2 testbench and the random Python co-simulation.
+////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
 

@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        pe_os (file: pe_os_sync.v)
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   Drop-in alternative to pe_os with identical ports and arithmetic.
+//                Only the accumulator reset differs: it is synchronous, which lets
+//                Vivado map the accumulator into the DSP48E1 P register.
+// Notes:         This is the PE compiled by the banked, AXI and Stage 14 flows.
+//                Forwarding registers keep their asynchronous reset on purpose.
+//                Same module name as pe_os.v: compile only one of them per build.
+////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns/1ps
 // EXPERIMENT ONLY: drop-in alternative for pe_os (same module name).
 // Use either this file OR rtl/pe/pe_os.v, never both in one compile.

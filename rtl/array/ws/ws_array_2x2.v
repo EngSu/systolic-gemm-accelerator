@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+// Author:        Sumaia A
+// Project:       systolic-gemm-accelerator
+// Module:        ws_array_2x2
+// Target:        Zynq-7000 XC7Z020 (ZedBoard), Vivado 2025.2
+// Description:   2x2 weight-stationary array built from two ws_chain_2 columns.
+//                One activation per k step is broadcast to both columns; each column
+//                streams out one result with its own valid.
+// Notes:         Weights are named b<k><column>: column 0 holds b00 and b10.
+//                Legacy fixed-size version; ws_array_param generalises it.
+////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns/1ps
 

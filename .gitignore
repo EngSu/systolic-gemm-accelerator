@@ -1,24 +1,28 @@
-# Icarus Verilog simulation output
-*.vvp
+# macOS
+.DS_Store
 
 # Python
 __pycache__/
 *.pyc
 
-# Simulation
+# Simulation output
 /build/
 *.vvp
 *.vcd
+a.out
+*.wdb
 
 # Vivado generated files
 /.Xil/
+.Xil/
 *.dcp
 *.jou
+*.str
 *.log
 *.pb
-*.wdb
 *.backup.jou
 *.backup.log
+hs_err_pid*
 /clockInfo.txt
 /dfx_runtime.txt
 
@@ -27,30 +31,16 @@ __pycache__/
 *.runs/
 *.gen/
 *.sim/
+*.hw/
+*.ip_user_files/
 
+# Vivado project folder: recreate with the Tcl scripts
+fpga/zedboard/project/*
+!fpga/zedboard/project/.gitkeep
 
-# Python
-__pycache__/
-*.pyc
+# Keep committed evidence logs (new ones must be added deliberately)
+!reports/**/*.log
 
-# Simulation
-/build/
-*.vvp
-*.vcd
-*.wdb
-
-# Vivado temporary/generated files
-/.Xil/
-*.dcp
-*.jou
-*.log
-*.pb
-*.cache/
-*.runs/
-*.gen/
-*.sim/
-
-# Vivado runtime metadata
-/clockInfo.txt
-/dfx_runtime.txt
-
+# Editors
+.vscode/
+*.swp

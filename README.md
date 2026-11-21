@@ -1,229 +1,132 @@
 # Systolic GEMM Accelerator
 
-**A Verilog-based FPGA accelerator project exploring output-stationary and weight-stationary systolic architectures for General Matrix Multiplication (GEMM).**
+A parameterized, signed-integer **output-stationary (OS) systolic GEMM accelerator** in Verilog for the ZedBoard (Zynq-7000 XC7Z020), with a weight-stationary (WS) array kept as a comparison baseline. The design is verified in simulation against a Python reference model, characterized with out-of-context Vivado synthesis and routing, and wrapped in an AXI4-Lite register interface.
 
-This project focuses on designing, verifying, and evaluating reusable hardware building blocks for matrix-multiplication acceleration, progressing from individual multiply-accumulate units to parameterized systolic arrays and FPGA/SoC integration.
+**Status:** simulation-verified and routed out of context. **Not yet run on hardware.** See [What is and is not demonstrated](#what-is-and-is-not-demonstrated).
 
-The long-term objective is to study architectural trade-offs involving dataflow, parallelism, pipelining, memory organization, resource utilization, latency, and throughput.
+## Architecture
 
-## Project Objectives
-
-- Design reusable and parameterized Verilog RTL modules.
-- Implement output-stationary (OS) and weight-stationary (WS) dataflows.
-- Develop scalable processing-element arrays.
-- Build automated RTL verification using Python reference models.
-- Explore pipelining, tiling, and memory architectures.
-- Evaluate FPGA synthesis, resource utilization, and timing.
-- Integrate accelerator hardware with an embedded processor using AXI interfaces.
-
-## Architecture Overview
-
-GEMM computes:
-
-\[
-C = A \times B
-\]
-
-where:
-
-- \(A\) is an \(M \times K\) matrix.
-- \(B\) is a \(K \times N\) matrix.
-- \(C\) is an \(M \times N\) output matrix.
-
-The project investigates two hardware dataflows.
-
-### Output-Stationary (OS)
-
-Each processing element retains its output partial sum locally while A and B operands move across the array.
-
-**Key characteristic:** Local accumulation minimizes movement of intermediate output partial sums.
-
-### Weight-Stationary (WS)
-
-Each processing element stores a weight and reuses it while activations and partial sums move through the computation.
-
-**Key characteristic:** Weight reuse reduces repeated weight delivery during a computation.
-
-Both implementations are being developed and verified independently to support meaningful architectural comparisons.
-
-## Repository Structure
+Computes `C = A × B` for signed 16-bit `A[M,K]` and `B[K,N]`, with 32-bit accumulators that wrap modulo 2^32.
 
 ```text
-systolic-gemm-accelerator/
-├── rtl/
-│   ├── mac/               # Multiply-accumulate unit
-│   ├── pe/                # Processing elements (OS and WS)
-│   ├── array/
-│   │   ├── os/            # Output-stationary arrays
-│   │   └── ws/            # Weight-stationary arrays
-│   ├── tile/              # Future tile-level architectures
-│   ├── mesh/              # Future mesh-level architectures
-│   ├── memory/            # Future memory interfaces
-│   └── control/           # Future accelerator control
-│
-├── tb/
-│   ├── mac_tb/
-│   ├── pe_tb/
-│   ├── array/
-│   │   ├── os/
-│   │   └── ws/
-│   ├── tile/
-│   └── mesh/
-│
-├── verification/
-│   ├── reference_models/  # Python golden models
-│   ├── regressions/       # Automated verification
-│   └── vectors/
-│
-├── fpga/
-│   └── zedboard/          # FPGA projects and constraints
-│
-├── docs/                  # Specifications and design notes
-├── scripts/               # Development utilities
-├── reports/               # Future implementation and comparisons
-└── diary/                 # Engineering development journal
+PS / CPU (future)
+   │  AXI4-Lite
+   ▼
+os_gemm_axi_lite_top      COMMAND / STATUS / staging registers / result window
+   └─ os_gemm_banked_top
+        ├─ gemm_sync_bank × (ROWS + COLS)   one A bank per row, one B bank per column
+        ├─ os_mem_prefetch_ctrl             IDLE → CLEAR → RUN → DONE, read prefetch + valid alignment
+        └─ os_array_param                   ROWS × COLS output-stationary PEs (pe_os)
 ```
 
-## Implementation Progress
+- **OS array:** each PE owns one `C[r,c]`; A moves right, B moves down. Processing takes `K + ROWS + COLS − 2` edges (10 for 4×4×4), excluding clear, done, and data loading.
+- **Banked memory:** synchronous-read banks with one-edge prefetch, so operand and valid signals stay aligned with the array.
+- **AXI4-Lite wrapper:** value-encoded COMMAND register (`1` START, `2` LOAD_BEGIN, `4` COMMIT), sticky DONE, SLVERR on illegal accesses. Register map: [`docs/design/stage13_axi4lite.md`](docs/design/stage13_axi4lite.md).
 
-### Completed and Verified
+## Results
 
-- [x] Signed multiply-accumulate (MAC) unit.
-- [x] Initial processing element with external partial-sum input.
-- [x] Output-stationary processing element.
-- [x] Weight-stationary processing element.
-- [x] Two-stage weight-stationary reduction chain.
-- [x] 2×2 weight-stationary GEMM array.
-- [x] 2×2 output-stationary GEMM array.
-- [x] Parameterized output-stationary array — 2×2 configuration verified.
-- [x] Python fixed-width GEMM reference model.
-- [x] Automated OS/WS RTL-versus-Python co-simulation for 2×2 matrices.
+All implementation numbers are for a **4×4×4** configuration, Vivado 2025.2, XC7Z020-CLG484-1, **out of context with a 10 ns clock**.
 
-### In Progress / Planned
+### OS vs WS datapath (post-route)
 
-- [ ] Verify parameterized OS configurations beyond 2×2.
-- [ ] Generalize the weight-stationary array.
-- [ ] Extend randomized verification to multiple matrix dimensions.
-- [ ] Implement parameterized tiles and meshes.
-- [ ] Investigate pipeline boundaries and timing optimization.
-- [ ] Develop accelerator control and memory interfaces.
-- [ ] Perform comparable FPGA synthesis and timing analysis.
-- [ ] Integrate AXI interfaces and processor-side software.
-- [ ] Demonstrate the accelerator on ZedBoard.
+| Variant | Slice LUTs | Slice FFs | DSP48E1 | DSP PREG | WNS (ns) |
+|---|---:|---:|---:|---|---:|
+| OS, async accumulator reset | 266 | 920 | 16 | 0 (all 16) | +2.991 |
+| OS, sync accumulator reset | 18 | 408 | 16 | 1 (all 16) | +4.311 |
+| WS | 68 | 265 | 16 | 1 (all 16) | +5.080 |
 
-## Verification
+### Integrated designs (post-route)
 
-Verification combines:
+| Design | Slice LUTs | Slice FFs | DSP48E1 | RAM32M | WNS (ns) | WHS (ns) |
+|---|---:|---:|---:|---:|---:|---:|
+| Banked memory + scheduler + array (Stage 12) | 155 | 546 | 16 | 24 | +2.606 | +0.110 |
+| + AXI4-Lite wrapper (Stage 14) | 459 | 774 | 16 | 24 | +1.620 | +0.028 |
 
-- Directed Verilog testbenches.
-- Icarus Verilog simulation.
-- Python unit tests.
-- Fixed-width signed arithmetic reference models.
-- Automated RTL-versus-software result comparison.
-- Reproducible randomized test vectors.
+Both integrated designs routed with zero routing errors.
 
-### Current Verification Results
+### Verification (simulation)
 
-| Design / Verification | Result |
+| Test | Result |
 |---|---|
-| MAC | 3 directed tests passed |
-| Initial PE | 3 directed tests passed |
-| OS PE | 8 directed tests passed |
-| WS PE | 11 directed tests passed |
-| Two-stage WS chain | 9 directed tests passed |
-| 2×2 WS GEMM array | 10 directed tests passed |
-| 2×2 OS GEMM array | 11 directed tests passed |
-| Python GEMM unit tests | 6 passed |
-| 2×2 OS/WS RTL co-simulation | 31 matrix cases, 0 failures |
-| Parameterized OS array (2×2) | Positive and signed matrix tests passed |
+| Python-vs-RTL, OS and WS, 4 shapes × 2 patterns | 8 / 8 workloads match |
+| Scheduler + array integration, 4 shapes × 3 cases | 12 / 12 pass |
+| Banked-memory integration, 4 shapes × 3 cases | 12 / 12 pass |
+| AXI4-Lite integration, 4 shapes × 3 cases | 12 / 12 pass |
+| Python reference-model unit tests | 6 / 6 pass |
 
-These results demonstrate functional correctness for the tested configurations and workloads. They do not yet constitute exhaustive verification or establish FPGA performance.
+Shapes (M×K×N): 2×2×2, 3×3×3, 4×4×4, 2×4×3. Cases: positive, mixed-sign, and maximum-positive values that exercise 32-bit wrap. Simulator: Icarus Verilog.
 
-## Running the Simulations
+## Key finding: reset style changes DSP inference
 
-**Prerequisites**
+Changing only the OS accumulator from asynchronous to synchronous reset moved the accumulator register from fabric into the DSP48E1 P register (PREG 0 → 1 for all 16 DSPs). Routed LUTs fell from 266 to 18 and FFs from 920 to 408.
 
-- Icarus Verilog (`iverilog` and `vvp`)
-- Python 3
-- Git
+**What this does and does not show.** It shows a coding choice can dominate resource counts for identical arithmetic. It does **not** show that OS is a better dataflow than WS, that the two reset styles are interchangeable (the reset contract changed: the accumulator no longer clears before a clock edge), or anything about end-to-end throughput. Details: [`README_OS_RESET_EXPERIMENT.md`](README_OS_RESET_EXPERIMENT.md).
 
-Run commands from the repository root.
+> `rtl/pe/pe_os.v` (async) and `rtl/pe/experimental/pe_os_sync.v` (sync) both define module `pe_os`. Compile **one or the other**, never both.
 
-### Python GEMM reference model
+## What is and is not demonstrated
 
-```bash
-python3 -m verification.reference_models.gemm_reference
+| Demonstrated | Not demonstrated yet |
+|---|---|
+| Functional correctness in simulation for the listed shapes and cases | Operation on the ZedBoard |
+| Out-of-context routed timing at a 10 ns clock | Full-system timing: I/O delays and PS clock source are unconstrained |
+| DSP and memory inference reports | Maximum clock frequency (WNS is not Fmax) |
+| AXI4-Lite register protocol in simulation | AXI protocol compliance, DMA, or throughput |
+| | Power, or end-to-end latency including data loading |
+
+Loading a 4×4×4 problem through the register interface takes 41 AXI writes before START. This is a deliberately simple first integration, not a high-bandwidth data path. AXI-Stream with DMA is the planned next step if measurements justify it.
+
+## Repository layout
+
+```text
+rtl/
+  pe/            pe_os.v, pe_ws.v, experimental/pe_os_sync.v
+  array/os|ws/   os_array_param.v, ws_array_param.v (+ 2x2 reference versions)
+  memory/        gemm_sync_bank.v
+  control/       os_mem_prefetch_ctrl.v, os_input_scheduler.v
+  top/           os_gemm_banked_top.v
+  axi/           os_gemm_axi_lite_top.v
+tb/              unit, array, integration, and comparison testbenches
+verification/    Python reference model, unit tests, co-simulation regressions
+scripts/         sim (PowerShell), synth + implementation (Vivado Tcl)
+reports/         curated Vivado reports and regression logs
+docs/            specifications and per-stage design notes
+fpga/zedboard/   constraints
 ```
 
-### Python unit tests
+## Reproducing results
 
-```bash
-python3 -m unittest discover \
-  -s verification/regressions \
-  -p 'test_*.py' -v
+Requirements: Icarus Verilog, Python 3, Vivado 2025.2. Commands run from the repository root (Windows PowerShell).
+
+```powershell
+# Python
+python -m unittest discover -s verification/regressions -p "test_*.py" -v
+python verification/regressions/run_param_gemm_regression_os_sync.py
+
+# Icarus regressions
+.\scripts\sim\run_os_scheduler_scaling.ps1
+.\scripts\sim\run_stage11_banked_memory.ps1
+.\scripts\sim\run_stage13_axi4lite.ps1
+
+# Vivado out-of-context synthesis and routing (Stage 14)
+$vivado = 'C:\AMDDesignTools\2025.2\Vivado\bin\vivado.bat'
+& $vivado -mode batch -source scripts/synth/synth_stage14_axi_ooc.tcl -tclargs 4 4 4
+& $vivado -mode batch -source scripts/implementation/route_stage14_axi_ooc.tcl -tclargs 4 4 4
 ```
 
-### Automated OS/WS regression
+## Roadmap
 
-```bash
-python3 -m verification.regressions.run_gemm_cosim
-```
+1. Run PS-only Hello World on the ZedBoard (Vitis 2025.2, standalone, Cortex-A9).
+2. Package `os_gemm_axi_lite_top` as IP and integrate with the Zynq PS (M_AXI_GP0).
+3. Bare-metal C test: load, start, poll, read back, compare with a software reference; measure load, compute, and readback time separately.
+4. Add randomized tests on the shipped design (parameterized array, banked top, AXI top), plus start-while-busy and mid-transaction reset.
+5. Evaluate AXI-Stream/DMA only if step 3 shows data movement dominates.
 
-### Parameterized OS array (2×2)
+## References
 
-```bash
-iverilog -g2012 -s os_array_param_tb \
-  -o /tmp/os_param_2x2.vvp \
-  rtl/pe/pe_os.v \
-  rtl/array/os/os_array_param.v \
-  tb/array/os/os_array_param_tb.v
+- AMD UG479, *7 Series DSP48E1 Slice User Guide*
+- AMD UG901, *Vivado Synthesis*; UG904, *Vivado Implementation*; UG906, *Design Analysis and Closure Techniques*
+- AMD UG1037, *Vivado AXI Reference Guide*
+- Google TPU and UC Berkeley Gemmini for systolic-array background
 
-vvp /tmp/os_param_2x2.vvp
-```
-
-## Target FPGA Platform
-
-**ZedBoard — AMD/Xilinx Zynq-7000 XC7Z020**
-
-FPGA development and future SoC integration will investigate:
-
-- RTL synthesis and implementation.
-- DSP, LUT, flip-flop, and memory resource utilization.
-- Maximum clock frequency and timing closure.
-- AXI-based communication between processor and programmable logic.
-- Hardware/software partitioning and accelerator control.
-
-The current GEMM architectures are simulation-verified prototypes; complete board-level accelerator integration is a future milestone.
-
-## Technologies
-
-- **RTL:** Verilog HDL
-- **Simulation:** Icarus Verilog
-- **Verification:** Python, Verilog testbenches
-- **FPGA tools:** AMD/Xilinx Vivado
-- **Automation:** Shell scripts, Tcl (planned integration)
-- **Development:** VS Code, Git, GitHub
-
-## Technical References
-
-The project draws architectural inspiration from:
-
-- Google TPU systolic matrix-multiplication architectures.
-- UC Berkeley Gemmini accelerator generator.
-- Established digital design, computer architecture, and FPGA verification practices.
-
-See `docs/architecture/references.md` for architectural references and further reading.
-
-## Development Approach
-
-The project follows an incremental engineering workflow:
-
-**Architecture specification → RTL implementation → Directed verification → Automated regression → Parameterization → FPGA evaluation → SoC integration**
-
-Design decisions, experiments, and implementation results will be documented throughout development.
-
-## Project Status
-
-**Active development — Functional GEMM dataflows verified; scalable architecture and FPGA evaluation in progress.**
-
-The repository is an engineering learning and experimentation platform rather than a production-ready accelerator.
+This is an engineering and learning project, not a production accelerator.

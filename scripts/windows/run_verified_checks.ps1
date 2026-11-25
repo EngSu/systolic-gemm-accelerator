@@ -44,7 +44,7 @@ if ($LASTEXITCODE -ne 0) {throw '2x2 OS/WS simulation FAILED.'}
 
 # Optional: only if the previously drafted scheduler and its TB are checked in.
 $scheduler = 'rtl/control/os_input_scheduler.v'
-$schedulerTb = 'tb/control/os_scheduler_integration_tb.v'
+$schedulerTb = 'tb/integration/os_scheduler_integration_tb.v'
 if ((Test-Path $scheduler) -and (Test-Path $schedulerTb)) {
     Write-Host '=== Optional OS scheduler integration simulation ==='
     $osInputs = @(

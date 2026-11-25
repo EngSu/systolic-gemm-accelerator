@@ -1,5 +1,7 @@
-# PowerShell 5.1 compatible. Run from repository root.
+# PowerShell 5.1 compatible. Run from any location; paths resolve relative to the repository.
 $ErrorActionPreference = 'Stop'
+$root = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+Set-Location $root
 $buildDir = 'build/integration'
 New-Item -ItemType Directory -Force $buildDir | Out-Null
 

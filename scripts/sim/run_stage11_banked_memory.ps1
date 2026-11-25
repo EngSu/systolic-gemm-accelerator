@@ -1,6 +1,8 @@
 # Windows PowerShell 5.1 / PowerShell 7 compatible.
-# Run from systolic-gemm-accelerator repository root.
+# Run from any location; paths resolve relative to the repository.
 $ErrorActionPreference = 'Stop'
+$root = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+Set-Location $root
 $buildDir = 'build/stage11'
 New-Item -ItemType Directory -Force $buildDir | Out-Null
 $shapes = @(
